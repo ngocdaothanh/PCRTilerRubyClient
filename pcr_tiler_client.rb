@@ -26,8 +26,9 @@ module PCRTiler
     'email' => ''
   }
 
-  ID_PATTERN       = /You will be able to view the results <a href="view.jsp\?id=(.+?)">/
-  PROGRESS_PATTERN = /(\d+) of (\d+) oligo pairs have been designed as of yet/
+  PATTERN_ID             = /You will be able to view the results <a href="view.jsp\?id=(.+?)">/
+  PATTERN_PROGRESS_Q     = /Your job is currently in the processing queue/
+  PATTERN_PROGRESS_DOING = /(\d+) of (\d+) oligo pairs have been designed as of yet/
 
   def self.post_job(base_url, params)
     # Merge params
@@ -39,7 +40,7 @@ module PCRTiler
     body = res.body
 
     # Take out id
-    m = ID_PATTERN.match(body)
+    m = PATTERN_ID.match(body)
     if m.nil?
       nil
     else
@@ -53,14 +54,19 @@ module PCRTiler
     res  = Net::HTTP.get_response(URI.parse(url))
     body = res.body
 
-    m = PROGRESS_PATTERN.match(body)
+    m = PATTERN_PROGRESS_Q.match(body)
     if m.nil?
-      txt = download_txt(base_url, id)
-      {:status => 'done', :txt => txt}
+      m = PATTERN_PROGRESS_DOING.match(body)
+      if m.nil?
+        txt = download_txt(base_url, id)
+        {:status => 'done', :txt => txt}
+      else
+        done  = m[1].to_i
+        total = m[2].to_i
+        {:status => 'doing', :done => done, :total => total}
+      end
     else
-      done  = m[1].to_i
-      total = m[2].to_i
-      {:status => 'doing', :done => done, :total => total}
+      {:status => 'queued'}
     end
   end
 

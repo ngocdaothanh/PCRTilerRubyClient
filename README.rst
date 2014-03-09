@@ -51,5 +51,6 @@ Check job result
 
 ``result`` examples:
 
+* {:status => 'queued'}
 * {:status => 'doing', :done => 10, :total => 16}
 * {:status => 'done', :txt => 'Oligos for job No name...'}

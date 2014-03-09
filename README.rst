@@ -8,7 +8,7 @@ Create job
 
   require 'pcr_tiler_client'
 
-  PCRTiler_BASE_URL = 'http://198.199.92.37:8080/PCRTiler'
+  PCRTiler_BASE_URL = 'http://pcrtiler.alaingervais.org:8080/PCRTiler'
 
   params = {
     'sequence' => 'ACCAATGGTGGCGCGATGTAACACGAGAAAGCACATACCAAGGCCACCACACACCACCTGTCCAAAAAGGCCTTCGATACGGGATAATCCTATTTATTACCTCAGAAGTTTTTTTCTTCGCAGGATTTTTCTGAGCCTTTTACCACTCCAGCCTAGCCCCTACCCCCCAACTAGGAGGGCACTGGCCCCCAACAGGCATCAACCAATGGTGGCGCGATGTAACACGAGAAAGCACATACCAAGGCCACCACACACCACCTGTCCAAAAAGGCCTTCGATACGGGATAATCCTATTTATTACCTCAGAAGTTTTTTTCTTCGCAGGATTTTTCTGAGCCTTTTACCACTCCAGCCTAGCCCCTACCCCCCAACTAGGAGGGCACTGGCCCCCAACAGGCATCAACCAATGGTGGCGCGATGTAACACGAGAAAGCACATACCAAGGCCACCACACACCACCTGTCCAAAAAGGCCTTCGATACGGGATAATCCTATTTATTACCTCAGAAGTTTTTTTCTTCGCAGGATTTTTCTGAGCCTTTTACCACTCCAGCCTAGCCCCTACCCCCCAACTAGGAGGGCACTGGCCCCCAACAGGCATCA',
@@ -20,6 +20,8 @@ If you don't specify other params, they will take default values:
 
 ::
 
+  job_name=PCRTilerRubyClient
+
   minimum_tm=60
   maximum_tm=63
   minimum_length=100
@@ -27,6 +29,9 @@ If you don't specify other params, they will take default values:
 
   segmentation_type=primer_pair_count
   primer_pair_count=20
+  primer_target_length=200
+
+  filter=
 
   total_mismatches=4
   three_prime_mismatches=2
@@ -34,6 +39,8 @@ If you don't specify other params, they will take default values:
   distance_threshold=3000
 
   program=blastn
+
+  email=
 
 Check job result
 ----------------

@@ -7,10 +7,9 @@ turn needs a Java virtual machine (JVM).
 
 Note that because only
 `PCRTiler server 32 bit version (i386) <http://pcrtiler.alaingervais.org:8080/PCRTiler/download.jsp>`_
-is provided, you should use Linux 32 bit.
-
-If you use Linux 64 bit, you must install addition i386 libraries, otherwise you will see
-`this "Not found" error <http://unix.stackexchange.com/questions/13391/getting-not-found-message-when-running-a-32-bit-binary-on-a-64-bit-system>`_
+is provided, you should use Linux 32 bit. If you use Linux 64 bit, you must
+install addition i386 libraries, otherwise you will see
+`this "Not found" error <http://unix.stackexchange.com/questions/13391/getting-not-found-message-when-running-a-32-bit-binary-on-a-64-bit-system>`_.
 
 On Ubuntu 64 bit:
 
